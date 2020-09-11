@@ -1,4 +1,4 @@
-package com.mode.entities.H;
+package com.mode.entities;
 
 import java.util.ArrayList;
 import java.util.List;

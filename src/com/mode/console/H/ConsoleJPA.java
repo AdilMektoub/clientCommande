@@ -1,4 +1,4 @@
-package com.mode.console.H;
+package com.mode.console;
 
 
 import java.util.ArrayList;
@@ -10,17 +10,16 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-
-import com.mode.entities.H.Client;
-import com.mode.entities.H.Commande;
-import com.mode.entities.H.Compte;
-import com.mode.entities.H.Voiture;
+import com.mode.entities.Client;
+import com.mode.entities.Commande;
+import com.mode.entities.Compte;
+import com.mode.entities.Voiture;
 
 
 public class ConsoleJPA {
 	
 
-public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
     	
         EntityManagerFactory entityManagerFactory = null;
         EntityManager em = null;

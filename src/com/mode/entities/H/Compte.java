@@ -1,4 +1,4 @@
-package com.mode.entities.H;
+package com.mode.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

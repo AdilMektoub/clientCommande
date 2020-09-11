@@ -1,4 +1,4 @@
-package com.mode.entities.H;
+package com.mode.entities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -30,8 +32,15 @@ public class Client {
     
     @OneToMany (fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "id_client") 
-    List<Commande> commandes = new ArrayList<>();
+    private List<Commande> commandes = new ArrayList<>();
+    
+    @ManyToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable( name = "clientsVoitures",
+    			joinColumns = @JoinColumn (name = "id_client"),
+                inverseJoinColumns = @JoinColumn( name = "id_voiture"))
+    private List<Voiture> voitures = new ArrayList<>();
 	
+    
 	public Client(String nom, String email, String password, 
 			int age, Compte compte, List<Commande> commandes) {
 		this.nom = nom;
@@ -41,6 +50,16 @@ public class Client {
 		this.compte = compte;
 		this.commandes = commandes;
 	}
+	
+	public List<Voiture> getVoitures() {
+		return voitures;
+	}
+
+	public void setVoitures(List<Voiture> voitures) {
+		this.voitures = voitures;
+	}
+
+
 
 	public Compte getCompte() {
 		return compte;
@@ -124,5 +143,11 @@ public class Client {
 
 	public Client() {
 	}
+
+
+
+
+
+
 	
 }
