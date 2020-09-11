@@ -16,8 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.mode.entities.H.Client;
-import com.mode.entities.H.Commande;
+import com.mode.entities.Client;
+import com.mode.entities.Commande;
+import com.mode.entities.Compte;
+import com.mode.entities.Voiture;
 
 
 @WebServlet("/login")
@@ -37,11 +39,14 @@ public class Login extends HttpServlet {
 		String email = request.getParameter( "txtEmail" );
 		String password = request.getParameter( "txtPassword" );	
 		List<Commande> commandesClient = new ArrayList<Commande>();
+		List<Voiture> voituresClient = new ArrayList<Voiture>();
 	
 		request.setAttribute( "email", email );
 		request.setAttribute( "password", password );
 		
 		Client connectedClient = null ;
+		Compte CompteDeClientConnecte =null;
+		
         EntityManagerFactory entityManagerFactory = null;
         EntityManager em = null;
         try {
@@ -56,6 +61,8 @@ public class Login extends HttpServlet {
             		
             		connectedClient = client;
             		commandesClient = client.getCommandes();
+            		CompteDeClientConnecte = client.getCompte();
+            		voituresClient = client.getVoitures();
             	}		
 			}   
             
@@ -71,6 +78,8 @@ public class Login extends HttpServlet {
 			HttpSession session = request.getSession( true );
 			session.setAttribute( "connectedClient", connectedClient );
 			session.setAttribute( "commandesClient", commandesClient );
+			session.setAttribute( "compte", CompteDeClientConnecte );
+			session.setAttribute( "voituresClient", voituresClient );
 
 			request.getRequestDispatcher( "/cmd.jsp" ).forward( request, response );
 		

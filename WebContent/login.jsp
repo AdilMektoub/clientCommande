@@ -11,11 +11,11 @@
 	
 	    <form method="post" action="login">
 
-	        Nom: 
-	        <input name="txtNom" value="${nom}" autofocus />
+	        Email : 
+	        <input name="txtEmail" value="${email}" autofocus />
 	        <br/>
 
-            Password: 
+            Password : 
             <input name="txtPassword" type="password" value="${password}" />
             <br/> <br/>
 	        

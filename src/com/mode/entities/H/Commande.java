@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.mode.entities.Client;
+
 @Entity @Table( name="commande")
 public class Commande {
 	
@@ -84,8 +86,4 @@ public class Commande {
 	public void setClient(Client client) {
 		this.client = client;
 	}
-	
-	
-	
-
 }

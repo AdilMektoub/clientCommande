@@ -10,15 +10,17 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+
 import com.mode.entities.H.Client;
 import com.mode.entities.H.Commande;
 import com.mode.entities.H.Compte;
+import com.mode.entities.H.Voiture;
 
 
 public class ConsoleJPA {
 	
 
-    public static void main(String[] args) throws Exception {
+public static void main(String[] args) throws Exception {
     	
         EntityManagerFactory entityManagerFactory = null;
         EntityManager em = null;
@@ -47,6 +49,20 @@ public class ConsoleJPA {
         
         nga.setCompte(c2);
         seb.setCompte(c1);
+        
+        Voiture bmw = new Voiture("v6sefv46", "BMW", "noir");
+        Voiture mini = new Voiture( "mini6584c6e4rouge", "Mini Cooper", "rouge");
+        Voiture ferrari = new Voiture("v6sefv46", "ferrari", "jaune");
+        Voiture mini2 = new Voiture( "mini6584c6e4rouge", "Mini 2", "rose");
+        
+        List<Voiture> voituresDeNga = new ArrayList<>();
+        List<Voiture> voituresDeSeb = new ArrayList<>();
+        voituresDeNga.add(mini2); voituresDeNga.add(mini);
+        voituresDeNga.add(bmw);
+        
+        voituresDeSeb.add(bmw); voituresDeSeb.add(ferrari);
+        nga.setVoitures(voituresDeNga);
+        seb.setVoitures(voituresDeSeb);
         
         try {
             entityManagerFactory = Persistence.createEntityManagerFactory("ClientCommandeJPA");

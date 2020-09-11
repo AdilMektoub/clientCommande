@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.mode.entities.H.Client;
-import com.mode.entities.H.Commande;
+import com.mode.entities.Client;
+import com.mode.entities.Commande;
 
 
 @WebServlet("/ajout")
@@ -30,7 +30,7 @@ public class AjoutCommande extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 	}
 
 
@@ -63,7 +63,6 @@ public class AjoutCommande extends HttpServlet {
             commandesClient.add(c);
             cmdAdded = true;
             trans.commit();
-
 
         } finally {
             if ( em != null ) em.close();
